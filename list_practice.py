@@ -318,8 +318,13 @@ def reverse_list_in_place(items):
 
     # I had a bit of trouble with the in-place idea. diff ideas I had:
     #   * for loop through items[::-1]
-    #   * items[:len(items) - 1]
     #   * using items[::-1].pop()
+
+    #### Tried a different idea and it worked, but seems to take more memory
+    # store_items = items[:len(items) - 1][::-1]
+    # for each_item in items[:len(items) - 1]:
+    #     items.remove(each_item)
+    # items.extend(store_items)
 
 
 def duplicates(items):
