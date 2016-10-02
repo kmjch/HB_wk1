@@ -1,4 +1,4 @@
-"""List Assessment 
+"""List Assessment
 
 Edit the functions until all of the doctests pass when
 you run this file.
@@ -16,8 +16,7 @@ def all_odd(numbers):
         >>> all_odd([2, -6, 8])
         []
     """
-
-    return ['the wrong thing']
+    return [num for num in numbers if num % 2 != 0]
 
 
 def print_indices(items):
@@ -38,8 +37,8 @@ def print_indices(items):
         1 Jeep
         2 Volvo
     """
-
-    print "Nothing at all"
+    for item in items:
+        print items.index(item), item
 
 
 def foods_in_common(foods1, foods2):
@@ -69,8 +68,8 @@ def foods_in_common(foods1, foods2):
         []
 
     """
-
-    return ['the wrong thing']
+    combined_lists = foods1 + foods2
+    return sorted([food_item for food_item in set(combined_lists) if combined_lists.count(food_item) > 1])
 
 
 def every_other_item(items):
@@ -86,8 +85,7 @@ def every_other_item(items):
        ... )
        ['you', 'are', 'good', 'at', 'code']
     """
-
-    return ['the wrong thing']
+    return [item for item in items if items.index(item) % 2 == 0]
 
 
 def largest_n_items(items, n):
@@ -100,7 +98,7 @@ def largest_n_items(items, n):
         >>> largest_n_items([2, 6006, 700, 42, 6, 59], 3)
         [59, 700, 6006]
 
-    It should work when `n` is 0::
+    It should work when `n` is 0:
 
         >>> largest_n_items([3, 4, 5], 0)
         []
@@ -111,8 +109,7 @@ def largest_n_items(items, n):
         >>> largest_n_items([3, 3, 3, 2, 1], 2)
         [3, 3]
     """
-
-    return []
+    return sorted(items)[len(items) - n:]
 
 
 #####################################################################
