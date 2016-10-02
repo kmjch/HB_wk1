@@ -116,9 +116,10 @@ def largest_int(numbers):
     if numbers == []:
         return
     store_num = numbers[0]
-    for num in numbers:
+    for num in numbers[1:]:
         if num > store_num:
             store_num = num
+    return store_num
 
 ####
 # wondering why "if numbers is False" does not work
@@ -203,8 +204,14 @@ def mult_numbers(numbers):
         >>> mult_numbers([])
         1
     """
-
-    return None
+    if numbers == []:
+        return 1
+    elif 0 in numbers:
+        return 0
+    product = numbers[0]
+    for each_num in numbers[1:]:
+        product *= each_num
+    return product
 
 
 def join_strings(words):
@@ -223,8 +230,10 @@ def join_strings(words):
         >>> join_strings([])
         ''
     """
-
-    return "Not the right thing"
+    joined = ''
+    for each_word in words:
+        joined += each_word
+    return joined
 
 
 def average(numbers):
@@ -246,8 +255,12 @@ def average(numbers):
     (Think of the best way to handle an empty input list, though,
     a feel free to provide a good solution here.)
     """
-
-    return 0
+    if numbers == []:
+        return
+    sum_of_list = numbers[0]
+    for each_num in numbers[1:]:
+        sum_of_list += each_num
+    return float(sum_of_list) / len(numbers)
 
 
 def join_strings_with_comma(words):
@@ -261,13 +274,17 @@ def join_strings_with_comma(words):
         'Labrador, Poodle, French Bulldog'
 
     If there's only one thing in the list, it should return just that
-    thing, of course::
+    thing, of course:
 
         >>> join_strings_with_comma(["Pretzel"])
         'Pretzel'
     """
-
-    return ""
+    output = words[0]
+    if len(words) == 1:
+        return output
+    for each_word in words[1:]:
+        output += (', ' + each_word)
+    return output
 
 
 def reverse_list(items):
@@ -292,8 +309,7 @@ def reverse_list(items):
         >>> orig
         ['apple', 'berry', 'cherry']
     """
-
-    return []
+    return items[::-1]
 
 
 def reverse_list_in_place(items):
@@ -318,8 +334,15 @@ def reverse_list_in_place(items):
         >>> orig
         ['I', 'love', 'cookies']
     """
+    for i in range(len(items) - 2, -1, -1):
+        store_item = items[i]
+        del items[i]
+        items.append(store_item)
 
-    return []
+    # I had a bit of trouble with the in-place idea. diff ideas I had:
+    #   * for loop through items[::-1]
+    #   * items[:len(items) - 1]
+    #   * using items[::-1].pop()
 
 
 def duplicates(items):
@@ -347,8 +370,11 @@ def duplicates(items):
         >>> orig
         ['apple', 'apple', 'berry']
     """
-
-    return []
+    dupl_list = []
+    for each_item in set(items):
+        if items.count(each_item) > 1:
+            dupl_list.append(each_item)
+    return dupl_list
 
 
 def find_letter_indices(words, letter):
@@ -377,8 +403,16 @@ def find_letter_indices(words, letter):
     ("o" does not appear in "jumps", so the result for that input is
     `None`.)
     """
+    # loop through list
+    # if letter in word
+    indices_list = []
+    for each_word in words:
+        if letter in each_word:
+            indices_list.append(each_word.index(letter))
+        else:
+            indices_list.append(None)
+    return indices_list
 
-    return []
 
 #####################################################################
 # END OF PRACTICE: You can ignore everything below.
