@@ -18,7 +18,8 @@ def print_list(items):
         9
     """
 
-    print "the wrong thing"
+    for num in items:
+        print num
 
 
 def long_words(words):
@@ -38,7 +39,11 @@ def long_words(words):
         []
     """
 
-    return ['the wrong thing']
+    list_long_words = []
+    for item in words:
+        if len(item) > 4:
+            list_long_words.append(item)
+    return list_long_words
 
 
 def n_long_words(words, n):
@@ -56,7 +61,11 @@ def n_long_words(words, n):
         ['apples', 'bananas']
     """
 
-    return ['the wrong thing']
+    words_longer_n = []
+    for item in words:
+        if len(item) > n:
+            words_longer_n.append(item)
+    return words_longer_n
 
 
 def smallest_int(numbers):
@@ -77,8 +86,13 @@ def smallest_int(numbers):
         >>> smallest_int([]) is None
         True
     """
-
-    return 100
+    if numbers == []:
+        return
+    store_num = numbers[0]
+    for num in numbers:
+        if num < store_num:
+            store_num = num
+    return store_num
 
 
 def largest_int(numbers):
@@ -99,8 +113,16 @@ def largest_int(numbers):
         >>> largest_int([]) is None
         True
     """
+    if numbers == []:
+        return
+    store_num = numbers[0]
+    for num in numbers:
+        if num > store_num:
+            store_num = num
 
-    return 0
+####
+# wondering why "if numbers is False" does not work
+####
 
 
 def halvesies(numbers):
@@ -112,13 +134,15 @@ def halvesies(numbers):
         [1.0, 3.0, -1.0]
 
     If any of the numbers are odd, make sure you don't round off
-    the half::
+    the half:
 
         >>> halvesies([1, 5])
         [0.5, 2.5]
     """
-
-    return []
+    output_list = []
+    for num in numbers:
+        output_list.append(float(num) / 2)
+    return output_list
 
 
 def word_lengths(words):
@@ -130,7 +154,10 @@ def word_lengths(words):
         [5, 3, 5, 4]
     """
 
-    return []
+    output_list = []
+    for each_word in words:
+        output_list.append(len(each_word))
+    return output_list
 
 
 def sum_numbers(numbers):
@@ -149,8 +176,12 @@ def sum_numbers(numbers):
         >>> sum_numbers([])
         0
     """
-
-    return None
+    if numbers == []:
+        return 0
+    sum_of_list = numbers[0]
+    for each_num in numbers[1:]:
+        sum_of_list += each_num
+    return sum_of_list
 
 
 def mult_numbers(numbers):
