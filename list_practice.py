@@ -17,7 +17,6 @@ def print_list(items):
         3
         9
     """
-
     for num in items:
         print num
 
@@ -38,12 +37,7 @@ def long_words(words):
         >>> long_words(["all", "are", "tiny"])
         []
     """
-
-    list_long_words = []
-    for item in words:
-        if len(item) > 4:
-            list_long_words.append(item)
-    return list_long_words
+    return [each_word for each_word in words if len(each_word) > 4]
 
 
 def n_long_words(words, n):
@@ -60,12 +54,7 @@ def n_long_words(words, n):
         >>> n_long_words(["I", "like", "apples", "bananas", "you"], 5)
         ['apples', 'bananas']
     """
-
-    words_longer_n = []
-    for item in words:
-        if len(item) > n:
-            words_longer_n.append(item)
-    return words_longer_n
+    return [each_word for each_word in words if len(each_word) > n]
 
 
 def smallest_int(numbers):
@@ -116,14 +105,12 @@ def largest_int(numbers):
     if numbers == []:
         return
     store_num = numbers[0]
-    for num in numbers[1:]:
+    for num in numbers:
         if num > store_num:
             store_num = num
     return store_num
 
-####
 # wondering why "if numbers is False" does not work
-####
 
 
 def halvesies(numbers):
@@ -140,10 +127,7 @@ def halvesies(numbers):
         >>> halvesies([1, 5])
         [0.5, 2.5]
     """
-    output_list = []
-    for num in numbers:
-        output_list.append(float(num) / 2)
-    return output_list
+    return [float(each_num) / 2 for each_num in numbers]
 
 
 def word_lengths(words):
@@ -154,11 +138,7 @@ def word_lengths(words):
         >>> word_lengths(["hello", "hey", "hello", "spam"])
         [5, 3, 5, 4]
     """
-
-    output_list = []
-    for each_word in words:
-        output_list.append(len(each_word))
-    return output_list
+    return [len(each_word) for each_word in words]
 
 
 def sum_numbers(numbers):
@@ -257,10 +237,7 @@ def average(numbers):
     """
     if numbers == []:
         return
-    sum_of_list = numbers[0]
-    for each_num in numbers[1:]:
-        sum_of_list += each_num
-    return float(sum_of_list) / len(numbers)
+    return float(sum(numbers)) / len(numbers)
 
 
 def join_strings_with_comma(words):
@@ -370,11 +347,7 @@ def duplicates(items):
         >>> orig
         ['apple', 'apple', 'berry']
     """
-    dupl_list = []
-    for each_item in set(items):
-        if items.count(each_item) > 1:
-            dupl_list.append(each_item)
-    return dupl_list
+    return [each_item for each_item in set(items) if items.count(each_item) > 1]
 
 
 def find_letter_indices(words, letter):
@@ -403,15 +376,7 @@ def find_letter_indices(words, letter):
     ("o" does not appear in "jumps", so the result for that input is
     `None`.)
     """
-    # loop through list
-    # if letter in word
-    indices_list = []
-    for each_word in words:
-        if letter in each_word:
-            indices_list.append(each_word.index(letter))
-        else:
-            indices_list.append(None)
-    return indices_list
+    return [each_word.index(letter) if letter in each_word else None for each_word in words]
 
 
 #####################################################################
